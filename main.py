@@ -18,7 +18,7 @@ class jobs:
         while True:
 
             i+= 11
-            if i >=  800:
+            if i >=  1000:
                 break
             r = requests.get('https://www.bing.com/search?q=site%3asa+%22upload+cv%22&qs=HS&pq=site%3a&sc=8-5&cvid=D4D138F1557A4DCEAFF2D95845E54B64&sp=1&first={}'.format(i) , headers={'User-Agent':"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:100.0) Gecko/20100101 Firefox/100.0"})
 
@@ -27,8 +27,10 @@ class jobs:
 
 
     def whynot(self , link):
-        r = requests.get(link).content
-        return True , link if "upload" or "email" in r.lower() else False
+        try:
+            r = requests.get(link).content
+            return True , link if "upload" or "email" in r.lower() else False
+        except:pass
 
 
 
